@@ -1,0 +1,32 @@
+<!doctype html>
+{% load static %}
+
+<html>
+    <head><link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+          <link href="https://fonts.googleapis.com/css?family=Roboto:100i" rel="stylesheet"></head>
+
+    <style>
+        li {list-style-type: none; }
+    </style>
+    </head>
+    <Title>Twitter</Title>
+    <body>
+    {% block title %}
+                {% if user.is_authenticated %}
+                    <h4 class="mainhead">Hello {{user}} in Task Manager <a href= "{% url 'logout' %}"> Log out </a>
+                        <br>
+                    </h4>
+                {% else %}
+                    <h4 class="mainhead">Hello annonymous <a href= "{% url 'login-view' %}"> Login </a></h4>
+                {% endif %}
+    {% endblock %}
+    {% block content %}
+        <p>
+        </p>
+    {% endblock %}
+
+    <footer>
+
+    </footer>
+    </body>
+</html>

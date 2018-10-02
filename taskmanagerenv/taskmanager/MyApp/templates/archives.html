@@ -1,0 +1,45 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+  <section>
+      <h3 class="back">Archives</h3> <br><br>
+
+
+
+       <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+          <th>Task</th>
+          <th>Category</th>
+          <th>Priority</th>
+          <th>Deadline</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+        {% for task in tasks %}
+        <tr>
+
+          <td class="tasknameclass">{{task.name}}</td>
+          <td>{{task.categorie}}</td>
+            <td>{{task.priority}}</td>
+            <td>{{task.deadline}}</td>
+
+
+
+          {% endfor %}
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}

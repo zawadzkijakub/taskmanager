@@ -1,0 +1,50 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+  <section>
+      <h3 class="back">Messages </h3> <br>
+
+
+      <form method="POST">
+          {% csrf_token %}
+          {{ form}}
+        <button type="submit" class="btn btn--primary btn--inside uppercase">Add </button>
+      </form>
+
+</table>
+    <br>
+  <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+          <th>Author</th>
+          <th>Content</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+      {% for message in messages%}
+        <tr>
+
+          <td>{{message.fromwho}}</td>
+          <td>{{message.description}}</td>
+
+          {% endfor %}
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+</section>
+{% endblock %}
+
+
+

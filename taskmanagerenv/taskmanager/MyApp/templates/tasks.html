@@ -1,0 +1,68 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+  <section>
+      <h3 class="back">Tasks</h3>
+
+    <form action="{% url 'tasks-view' %}" method="post" class="form" >
+        {% csrf_token %}
+        <input type="text" name="name" class="form__field_task2" placeholder="Task name"/>
+        <button type="submit" class="btn btn--primary btn--inside uppercase">Add </button><br><br>
+
+        <input type="date" name="deadline" class="form__field_task">
+        <select name="cat" class="form__field_task">
+            <option selected="selected" disabled> Select category</option>
+            {% for categorie in categories %}
+            <option value="{{categorie.id}}">{{categorie.name}}</option>
+            {% endfor %}
+        </select>
+        <select name="priority" class="form__field_task">
+            <option selected="selected" disabled > Select priority </option>
+            <option value="medium"> Medium </option>
+            <option value="high"> High </option>
+            <option value="very high"> Very High </option>
+        </select>
+        <br><br>
+
+    </form>
+
+
+       <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+          <th>Task</th>
+          <th>Category</th>
+          <th>Priority</th>
+          <th>Deadline</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+        {% for task in tasks %}
+        <tr>
+
+          <td class="tasknameclass">{{task.name}}</td>
+          <td>{{task.categorie}}</td>
+            <td>{{task.priority}}</td>
+            <td>{{task.deadline}}</td>
+            <td><a href="{% url 'delete-task-view' task.id %}"> Delete </a></td>
+
+
+
+          {% endfor %}
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% load static %}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100i" rel="stylesheet"></head>
+    <script src="{% static 'js/js.js' %}"></script>
+
+<section class="container">
+  <div class="right-half">
+    <article>
+        <p class="headerlog">Sign up</p> <br>
+        <p class="login">
+            <form action="{% url 'adduser-view' %}" method="post">
+                {% csrf_token %}
+                <input type="text" id = "login" name="login" placeholder="Username" autocorrect="off"> <br>
+                <input type="email" id = "emailhide" name="email" placeholder="Email"> <br>
+                <input type="password" id = "password" name="password" placeholder="Password">
+                <p id="showpassword">Show Password</p> <br>
+                <input type="submit" value="Sign up to Task Manager ">
+            </form>
+        </p>
+    </article>
+  </div>
+  <div class="left-half">
+      <article>
+        <h1></h1>
+            <p></p>
+      </article>
+  </div>
+
+
+</section>

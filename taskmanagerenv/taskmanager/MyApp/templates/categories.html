@@ -1,0 +1,48 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<section>
+    <h3 class="back">Categories </h3>
+    <form action="{% url 'categories-view' %}" method="post" class="form">
+        {% csrf_token %}
+        <input type="text" class="form__field" id = "categories_name" name="name" placeholder="Category name"/>
+        <button type="submit" class="btn btn--primary btn--inside uppercase">Add </button>
+    </form>
+    <br>
+
+    </table>
+    <br>
+  <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Action </th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+         {% for category in categories %}
+
+        <tr>
+
+          <td><a href="{% url 'detail-categories-view' category.id %}">{{ category.name }}</a></td>
+          <td><a href="{% url 'edit-categories-view' category.id %}">Rename</a>
+              <a href="{% url 'delete-categories-view' category.id %}">Delete</a>
+          </td>
+
+          {% endfor %}
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}
+
